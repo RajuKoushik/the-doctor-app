@@ -7,5 +7,6 @@ urlpatterns = [
     url(r'^login/', rest_views.obtain_auth_token),
     url(r'^signup/?', views.signup),
     url(r'^home/?', views.home, name='home'),
+    url(r'^login/', rest_views.obtain_auth_token),
 
 ]

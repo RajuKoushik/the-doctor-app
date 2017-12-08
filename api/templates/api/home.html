@@ -1,6 +1,16 @@
 {% extends 'api/base.html' %}
 
 {% block content %}
-  <h2>home/h2>
+    <h2>Lsit of patients</h2>
+    {% for patient in patient_list %}
+
+
+        <h2><a href="{{ patient.id }} "
+               style="color:#bc873e "><strong>{{ patient.id }}</strong></a></h2>
+
+
+
+
+    {% endfor %}
 
 {% endblock %}

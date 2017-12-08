@@ -1,0 +1,16 @@
+{% extends 'api/base.html' %}
+
+{% block content %}
+    <h2>Lsit of patients to accesses info</h2>
+    {% for patient in patient_list %}
+
+        <h2><a href="{{ post.id }} "
+               style="color:#bc873e "><strong>{{ patient.details }}</strong></a></h2>
+        <p>{{ patient.details }}</p>
+
+
+
+
+    {% endfor %}
+
+{% endblock %}

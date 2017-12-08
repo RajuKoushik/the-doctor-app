@@ -6,8 +6,9 @@ from api.forms import SignUpForm
 
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
 
-
+@csrf_exempt
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -17,6 +18,8 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             first_name = form.cleaned_data.get('first_name')
             last_name = form.cleaned_data.get('last_name')
+
+            pateint_list = models.PatientInfo.objects.all()
 
             user = authenticate(username=username, password=raw_password)
             if form.cleaned_data.get('select') == 'Patient':
@@ -36,7 +39,7 @@ def signup(request):
                 pharmacistinfo.save()
             login(request, user)
 
-            return redirect('home')
+            return render(request, 'api/home.html', {'patient_list': pateint_list})
 
     else:
         form = SignUpForm()
