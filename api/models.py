@@ -11,10 +11,10 @@ class PatientInfo(models.Model):
     def __str__(self):
         return self.user.username
 
-    patient_unique_name = models.CharField(max_length=5000)
+    patient_unique_name = models.CharField(max_length=5000,null=True)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     age = models.PositiveIntegerField(default=0)
-    details = models.CharField(max_length=5000)
-    join_date = models.DateTimeField('Join published', default='2011-11-11 11:11')
+    details = models.CharField(max_length=5000,null=True)
 
 
 class Doctor(models.Model):
